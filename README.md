@@ -1,5 +1,7 @@
 # vuckforum
 
+[![GuardRails badge](https://badges.production.guardrails.io/shtakai/fvuckforum.svg)](https://www.guardrails.io)
+
 > fucked up vue
 
 ## Build Setup
