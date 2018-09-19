@@ -1,7 +1,7 @@
 <template>
-  <div class="col-full">
-    <h1>Not Found</h1>
-    <p>Ooops, what are you fucking for something fucked up morons?
+  <div class="col-full" :class="$style.centred">
+    <h1 :class="$style.headingLarge">Not Found</h1>
+    <p :class="$style.textLarge">Ooops, what are you fucking for something fucked up morons?
       <router-link :to="{name: 'Home'}">
         Kill em all!
       </router-link>
@@ -15,17 +15,17 @@ export default {
 }
 </script>
 
-<style scoped>
-h1 {
+<style module>
+.headingLarge {
   font-size: 100px;
 }
 
-p {
+.textLarge {
   font-size: 50px;
   font-weight: 100;
 }
 
-div {
+.centred {
   text-align: center;
 }
 </style>
