@@ -11,7 +11,7 @@
           name="title"
           id="thread_title"
           class="form-input"
-        >
+        />
       </div>
 
       <div class="form-grou">
@@ -23,7 +23,7 @@
           row="8"
           cols="148"
           class="form-input"
-        >
+        />
       </div>
 
       <div class="btn-group">
@@ -52,14 +52,11 @@ export default {
 
   methods: {
     save () {
-      this.$store.dispatch(
-        'createThread',
-        {
-          forumId: this.forum['.key'],
-          title: this.title,
-          text: this.text
-        }
-      )
+      this.$store.dispatch('createThread', {
+        forumId: this.forum['.key'],
+        title: this.title,
+        text: this.text
+      })
     }
   }
 }
