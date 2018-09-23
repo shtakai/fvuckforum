@@ -27,13 +27,10 @@
       }
     },
 
-    data () {
-      return {
-        thread: this.$store.state.threads[this.id]
-      }
-    },
-
     computed: {
+      thread () {
+        return this.$store.state.thread[this.id]
+      },
       posts () {
         const postIds = Object.values(this.thread.posts)
         return Object.values(this.$store.state.posts)
