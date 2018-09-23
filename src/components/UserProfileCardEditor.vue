@@ -77,6 +77,10 @@ export default {
   methods: {
     save () {
       this.$store.dispatch('updateUser', {...this.activeUser})
+      this.$router.push({name: 'Profile'})
+    },
+    cancel () {
+      this.$router.push({name: 'Profile'})
     }
   }
 }
