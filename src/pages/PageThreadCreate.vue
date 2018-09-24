@@ -37,9 +37,9 @@
 <script>
 export default {
   props: {
-    forum: {
+    forumId: {
       required: true,
-      type: Object
+      type: String
     }
   },
 
@@ -47,6 +47,12 @@ export default {
     return {
       title: '',
       text: ''
+    }
+  },
+
+  computed: {
+    forum () {
+      return this.$store.state.forums[this.forumId]
     }
   },
 
