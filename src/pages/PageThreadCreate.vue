@@ -56,6 +56,8 @@ export default {
         forumId: this.forum['.key'],
         title: this.title,
         text: this.text
+      }).then(thread => {
+        this.$router.push({name: 'ThreadShow', params: {id: thread['.key']}})
       })
     }
   }
