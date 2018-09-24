@@ -3,7 +3,7 @@
     <div class="form-group">
       <label for="thread_title">Title:</label>
       <input
-        v-model="title"
+        v-model="form.title"
         type="text"
         name="title"
         id="thread_title"
@@ -14,7 +14,7 @@
     <div class="form-grou">
       <label for="thread_title">Content:</label>
       <textarea
-        v-model="text"
+        v-model="form.text"
         name="content"
         id="thread_content"
         row="8"
@@ -32,16 +32,29 @@
 
 <script>
 export default {
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    text: {
+      type: String,
+      default: ''
+    }
+  },
+
   data () {
     return {
-      title: '',
-      text: ''
+      form: {
+        title: this.title,
+        text: this.text
+      }
     }
   },
 
   methods: {
     save () {
-      this.$emit('save', {title: this.title, text: this.text})
+      this.$emit('save', {title: this.form.title, text: this.form.text})
     },
 
     cancel () {
