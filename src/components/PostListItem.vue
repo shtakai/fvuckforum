@@ -11,8 +11,14 @@
     </div>
 
     <div class="post-content">
-      <div>
+      <div v-if="!editing">
         {{post.text}}
+      </div>
+      <div v-else>
+        <PostEditor
+          :post="post"
+          @save="editing = false"
+        />
       </div>
     </div>
 
@@ -24,6 +30,7 @@
 
 <script>
 import {countObjectProperties} from '@/helpers/utils'
+import PostEditor from './PostEditor'
 export default {
   props: {
     post: {
@@ -31,6 +38,17 @@ export default {
       type: Object
     }
   },
+
+  components: {
+    PostEditor
+  },
+
+  data () {
+    return {
+      editing: false
+    }
+  },
+
   computed: {
     user () {
       return this.$store.state.users[this.post.userId]
