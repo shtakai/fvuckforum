@@ -5,9 +5,13 @@ import App from './App'
 import router from './router'
 import store from '@/store'
 import AppDate from '@/components/AppDate'
+import firebase from 'firebase'
+import {config} from './config'
 
 Vue.component('AppDate', AppDate)
 Vue.config.productionTip = false
+
+firebase.initializeApp(config)
 
 /* eslint-disable no-new */
 new Vue({
