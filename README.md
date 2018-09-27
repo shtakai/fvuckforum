@@ -4,6 +4,26 @@
 
 > fucked up vue
 
+## Configuration for `firebase`
+
+Copy `src/config.sample.js` to `src/config.js`, then update like as followed.
+
+Don't share the confidential information. 🌮
+
+```javascript
+const config = {
+  apiKey: 'APIKEYFROMFIREBASE',
+  authDomain: 'APPNAMEDOMAIN',
+  databaseURL: 'DATABASEURL',
+  projectId: 'PROJECTID',
+  storageBucket: 'STORAGEBUCKED',
+  messagingSenderId: 'MESSAGINGSENDERID'
+}
+
+export {config}
+```
+
+
 ## Build Setup
 
 ``` bash
