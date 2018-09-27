@@ -22,48 +22,49 @@
 </template>
 
 <script>
-  import PostList from '@/components/PostList'
-  import PostEditor from '@/components/PostEditor'
 
-  export default {
-    components: {
-      PostList,
-      PostEditor
+import PostList from '@/components/PostList'
+import PostEditor from '@/components/PostEditor'
+
+export default {
+  components: {
+    PostList,
+    PostEditor
+  },
+
+  props: {
+    id: {
+      required: true,
+      type: String
+    }
+  },
+
+  computed: {
+    thread () {
+      return this.$store.state.threads[this.id]
     },
 
-    props: {
-      id: {
-        required: true,
-        type: String
-      }
+    user () {
+      return this.$store.state.users[this.thread.userId]
     },
 
-    computed: {
-      thread () {
-        return this.$store.state.threads[this.id]
-      },
+    repliesCount () {
+      return this.$store.getters.threadRepliesCount(this.thread['.key'])
+    },
 
-      user () {
-        return this.$store.state.users[this.thread.userId]
-      },
+    contributorsCount () {
+      const replies = Object.keys(this.thread.posts)
+        .filter(postId => postId !== this.thread.firstPostId)
+        .map(postId => this.$store.state.posts[postId])
+      const userIds = replies.map(post => post.userId)
+      return userIds.filter((item, index) => index === userIds.indexOf(item)).length
+    },
 
-      repliesCount () {
-        return this.$store.getters.threadRepliesCount(this.thread['.key'])
-      },
-
-      contributorsCount () {
-        const replies = Object.keys(this.thread.posts)
-          .filter(postId => postId !== this.thread.firstPostId)
-          .map(postId => this.$store.state.posts[postId])
-        const userIds = replies.map(post => post.userId)
-        return userIds.filter((item, index) => index === userIds.indexOf(item)).length
-      },
-
-      posts () {
-        const postIds = Object.values(this.thread.posts)
-        return Object.values(this.$store.state.posts)
-          .filter(post => postIds.includes(post['.key']))
-      }
+    posts () {
+      const postIds = Object.values(this.thread.posts)
+      return Object.values(this.$store.state.posts)
+        .filter(post => postIds.includes(post['.key']))
     }
   }
+}
 </script>
