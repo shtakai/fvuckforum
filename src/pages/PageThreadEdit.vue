@@ -1,5 +1,5 @@
 <template>
-  <div class="col-full push-top">
+  <div v-if="thread && text" class="col-full push-top">
     <h1>Fucking to the fucked up in <i>{{thread.title}}</i></h1>
 
     <ThreadEditor
@@ -55,6 +55,11 @@ export default {
     cancel () {
       this.$router.push({ name: 'ThreadShow', params: {id: this.id} })
     }
+  },
+
+  created () {
+    this.$store.dispatch('fetchThread', {id: this.id})
+      .then(thread => this.$store.dispatch('fetchPost', {id: thread.firstPostId}))
   }
 }
 </script>
