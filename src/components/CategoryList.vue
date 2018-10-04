@@ -14,7 +14,6 @@ export default {
   components: {
     CategoryListItem
   },
-
   props: {
     categories: {
       required: true,
