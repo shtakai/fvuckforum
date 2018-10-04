@@ -48,7 +48,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['fetchForums', 'fetchThreads', 'fetchUser'])
+    ...mapActions(['fetchForum', 'fetchThreads', 'fetchUser'])
   },
 
   created () {

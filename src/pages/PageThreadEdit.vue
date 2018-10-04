@@ -33,7 +33,7 @@ export default {
     },
 
     text () {
-      const post = this.$store.state.posts[this.thread.firstPostId].text
+      const post = this.$store.state.posts[this.thread.firstPostId]
       return post ? post.text : null
     }
   },

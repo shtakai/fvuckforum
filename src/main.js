@@ -11,8 +11,9 @@ import {config} from './config'
 Vue.component('AppDate', AppDate)
 Vue.config.productionTip = false
 
+console.log(config)
 firebase.initializeApp(config)
-
+console.log(firebase)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
